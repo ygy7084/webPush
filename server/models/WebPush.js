@@ -9,6 +9,7 @@ const WebPush = new Schema({
     authSecret: String,
   },
   message: String,
+  sendTime: Date,
 });
 const model = mongoose.model('webPush', WebPush);
 export default model;

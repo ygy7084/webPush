@@ -84,6 +84,7 @@ router.post('/', (req, res) => {
     keys: keys,
     message: message,
     pushStatus: pushStatus,
+    sendTime: new Date(),
   });
   push.save((err, result) => {
     if (err) {
@@ -100,7 +101,8 @@ router.post('/', (req, res) => {
         p256dh: keys.key,
       },
     }, JSON.stringify({
-      message: message
+      message: message,
+      id: result._id,
     }))
       .then(() => {
         WebPush.findOneAndUpdate(
